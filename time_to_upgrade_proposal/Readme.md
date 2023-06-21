@@ -8,6 +8,13 @@ This action will calculate the date in the future the provided upgrade height wo
  - rpc_url: "${{ env.NODE }}"
 
 ```yaml
+      #THIS SETS THE AVERAGE BLOCK TIME ENV VAR.
+      - name: "CALCULATE:AVERAGE:NETWORK:BLOCKTIME"
+        uses: gzukel/CosmosComposites/average_network_blocktime@main
+        with:
+          avg_time_sample_size: 10
+          rpc_url: "${{ env.NODE }}"
+          
       - name: "CALCULATE:PROPOSAL:DATETIME"
         uses: gzukel/CosmosComposites/time_to_upgrade_proposal@main
         with:
