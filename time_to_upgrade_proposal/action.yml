@@ -11,6 +11,9 @@ inputs:
   average_block_time:
     description: "The calculated average block time of the network."
     required: true
+  upgrade_buffer_seconds:
+    description: "The upgrade buffer for the height check."
+    required: true
 runs:
   using: "composite"
   steps:
@@ -36,6 +39,7 @@ runs:
         RPC_URL: "${{ inputs.rpc_url }}"
         UPGRADE_HEIGHT: "${{ inputs.upgrade_height }}"
         AVERAGE_BLOCK_TIME: "${{ inputs.average_block_time }}"
+        UPGRADE_BUFFER_SECONDS: "${{ inputs.upgrade_buffer_seconds }}"
       run: |
         python calculate_upgrade_date.py
         
