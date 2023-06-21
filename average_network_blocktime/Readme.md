@@ -14,5 +14,5 @@ This pipeline will save the calculated value into a GITHUB ACTION ENVIRONMENT VA
         uses: gzukel/CosmosComposites/average_network_blocktime@main
         with:
           avg_time_sample_size: 10
-          rpc_url: {COSMOS_SDK_URL}
+          rpc_url: "${{ env.NODE }}"
 ```
