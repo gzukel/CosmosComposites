@@ -1,4 +1,4 @@
-## CALCULATE NETWORK AVERAGE LOCK TIME
+## CALCULATE NETWORK AVERAGE BLOCK TIME
 
 This action will use the current height and calculate the average block height based on input sample size. Meaning it will take the current block minus sample size
 and then calculate the mean between the time differences of the blocks from the sample size.
