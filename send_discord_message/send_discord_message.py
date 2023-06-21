@@ -23,5 +23,6 @@ async def on_ready():
     channel_id = os.environ["DISCORD_CHANNEL_ID"]
     channel = client.get_channel(int(channel_id))
     await channel.send(os.environ["DISCORD_MESSAGE"])
+    await client.close()
 
 client.run(os.environ["DISCORD_TOKEN"])
