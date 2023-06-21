@@ -49,5 +49,5 @@ else:
     logger.log.critical("FAILED:TO:GET:GENESIS")
     sys.exit(2)
 GITHUB_ENV = open(os.environ["GITHUB_ENV"], "a+")
-GITHUB_ENV.write(f"UPGRADE_DATE='{utc_dt}'")
+GITHUB_ENV.write(f"UPGRADE_DATE={utc_dt}")
 GITHUB_ENV.close()
