@@ -38,7 +38,7 @@ runs:
         DISCORD_MESSAGE: "${{ inputs.discord_message}}"
       run: |
         discord_message_length=${#DISCORD_MESSAGE}
-        if (( value > 2000 )); then
+        if (( discord_message_length > 2000 )); then
             echo "******WARNING YOUR DISCORD MESSAGE IS ABOVE 2000 CHARACTERS WILL NOT SEND******"
             echo "******WARNING YOUR DISCORD MESSAGE IS ABOVE 2000 CHARACTERS WILL NOT SEND******"
             echo "******WARNING YOUR DISCORD MESSAGE IS ABOVE 2000 CHARACTERS WILL NOT SEND******"
