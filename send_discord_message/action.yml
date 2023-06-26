@@ -37,6 +37,16 @@ runs:
         DISCORD_TOKEN: "${{ inputs.discord_token }}"
         DISCORD_MESSAGE: "${{ inputs.discord_message}}"
       run: |
-        python send_discord_message.py
+        discord_message_length=${#DISCORD_MESSAGE}
+        if (( value > 2000 )); then
+            echo "******WARNING YOUR DISCORD MESSAGE IS ABOVE 2000 CHARACTERS WILL NOT SEND******"
+            echo "******WARNING YOUR DISCORD MESSAGE IS ABOVE 2000 CHARACTERS WILL NOT SEND******"
+            echo "******WARNING YOUR DISCORD MESSAGE IS ABOVE 2000 CHARACTERS WILL NOT SEND******"
+            echo "******WARNING YOUR DISCORD MESSAGE IS ABOVE 2000 CHARACTERS WILL NOT SEND******"
+            echo "******WARNING YOUR DISCORD MESSAGE IS ABOVE 2000 CHARACTERS WILL NOT SEND******"
+        else
+            python send_discord_message.py
+        fi
+        
         
 
