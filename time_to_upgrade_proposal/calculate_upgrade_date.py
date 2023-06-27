@@ -32,7 +32,7 @@ average_block_time = float(os.environ["AVERAGE_BLOCK_TIME"])
 if web_request:
     logger.log.info("Web Request: Success")
     voting_period = int(os.environ["VOTING_PERIOD"])
-    voting_period = voting_period + int(os.environ["UPGRADE_BUFFER_SECONDS"])
+    voting_period = voting_period
     total_number_of_blocks_for_upgrade = upgrade_height - current_height
     total_seconds_for_upgrade = float(total_number_of_blocks_for_upgrade) * average_block_time
     if total_seconds_for_upgrade > voting_period:
