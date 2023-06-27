@@ -35,6 +35,12 @@ if web_request:
     voting_period = voting_period
     total_number_of_blocks_for_upgrade = upgrade_height - current_height
     total_seconds_for_upgrade = float(total_number_of_blocks_for_upgrade) * average_block_time
+    logger.log.info(f"VOTING PERIOD: {voting_period}")
+    logger.log.info(f"UPGRADE_HEIGHT: {upgrade_height}")
+    logger.log.info(f"CURRENT_HEIGHT: {current_height}")
+    logger.log.info(f"AVERAGE BLOCK TIME: {average_block_time}")
+    logger.log.info(f"BLOCKS BETWEEN CURRENT BLOCK AND UPGRADE BLOCK: {total_number_of_blocks_for_upgrade}")
+    logger.log.info(f"TOTAL SECONDS FOR UPGRADE: {total_seconds_for_upgrade}")
     if total_seconds_for_upgrade > voting_period:
         logger.log.info("UPGRADE HEIGHT BEYOND VOTING PERIOD CHECK: PASS")
     else:
