@@ -1,11 +1,7 @@
 ## CALCULATE:PROPOSAL:DATETIME
 
-This action will calculate the date in the future the provided upgrade height would occur. This is used for calculating when proposals will execute.
-
-### Required Vars:
- - upgrade_height: "${{ env.UPGRADE_HEIGHT }}"
- - average_block_time: "${{ env.AVERAGE_BLOCK_TIME }}"
- - rpc_url: "${{ env.NODE }}"
+This action will calculate the future upgrade height based on datetime passed in, in UTC time.
+ex. 6/28/2023 14:30
 
 ```yaml
       #THIS SETS THE AVERAGE BLOCK TIME ENV VAR.
@@ -15,11 +11,10 @@ This action will calculate the date in the future the provided upgrade height wo
           avg_time_sample_size: 10
           rpc_url: "${{ env.NODE }}"
           
-      - name: "CALCULATE:PROPOSAL:DATETIME"
-        uses: gzukel/CosmosComposites/time_to_upgrade_proposal@main
+      - name: "CALCULATE:PROPOSAL:HEIGHT:FROM:DATETIME"
+        uses: gzukel/CosmosComposites/calculate_future_upgrade_height@main
         with:
-          upgrade_height: "${{ env.UPGRADE_HEIGHT }}"
+          upgrade_date: "${{ github.event.inputs.UPGRADE_DATE }}"
           average_block_time: "${{ env.AVERAGE_BLOCK_TIME }}"
-          rpc_url: "${{ env.NODE }}"
-          upgrade_buffer_seconds: "${{ env.UPGRADE_BUFFER_SECONDS }}"
+          rpc_url: "${{ env.TENDERMINT_NODE }}"
 ```
