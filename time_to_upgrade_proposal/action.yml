@@ -14,6 +14,9 @@ inputs:
   upgrade_buffer_seconds:
     description: "The upgrade buffer for the height check."
     required: true
+  vote_period:
+    description: "The voting period for the network"
+    required: true
 runs:
   using: "composite"
   steps:
@@ -40,6 +43,7 @@ runs:
         UPGRADE_HEIGHT: "${{ inputs.upgrade_height }}"
         AVERAGE_BLOCK_TIME: "${{ inputs.average_block_time }}"
         UPGRADE_BUFFER_SECONDS: "${{ inputs.upgrade_buffer_seconds }}"
+        VOTING_PERIOD: "${{ inputs.vote_period }}"
       run: |
         python calculate_upgrade_date.py
         
