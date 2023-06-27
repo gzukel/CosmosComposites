@@ -25,13 +25,16 @@ def requests_get_call(url):
         web_request = None
     return web_request
 
+def convert_nanoseconds_to_seconds(nanoseconds):
+    return nanoseconds / 1000000000
+
 web_request = requests_get_call(f"{os.environ['RPC_URL']}/genesis")
 current_height = int(requests_get_call(f"{os.environ['RPC_URL']}/status")["result"]["sync_info"]["latest_block_height"])
 upgrade_height = int(os.environ["UPGRADE_HEIGHT"])
 average_block_time = float(os.environ["AVERAGE_BLOCK_TIME"])
 if web_request:
     logger.log.info("Web Request: Success")
-    voting_period = int(os.environ["VOTING_PERIOD"])
+    voting_period = convert_nanoseconds_to_seconds(int(os.environ["VOTING_PERIOD"]))
     voting_period = voting_period
     total_number_of_blocks_for_upgrade = upgrade_height - current_height
     total_seconds_for_upgrade = float(total_number_of_blocks_for_upgrade) * average_block_time
@@ -41,6 +44,7 @@ if web_request:
     logger.log.info(f"AVERAGE BLOCK TIME: {average_block_time}")
     logger.log.info(f"BLOCKS BETWEEN CURRENT BLOCK AND UPGRADE BLOCK: {total_number_of_blocks_for_upgrade}")
     logger.log.info(f"TOTAL SECONDS FOR UPGRADE: {total_seconds_for_upgrade}")
+
     if total_seconds_for_upgrade > voting_period:
         logger.log.info("UPGRADE HEIGHT BEYOND VOTING PERIOD CHECK: PASS")
     else:
